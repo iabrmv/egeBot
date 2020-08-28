@@ -1,1 +1,1 @@
-worker: python ege_bot.pyheroku apps:destroy
+worker: python ege_bot.py
