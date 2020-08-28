@@ -31,8 +31,9 @@ def welcome(message):
 @bot.message_handler(content_types=['text'])
 def main(message):
     chat_id = message.chat.id
-
-    if message.text == 'Сдать тест': ### сделать маппинг кнопок
+    if message.from_user.is_bot:   ### защита от ботов
+        bot.send_message(chat_id, 'You shall not pass')
+    elif message.text == 'Сдать тест': ### сделать маппинг кнопок
         current.add_user(chat_id)
         current.users[chat_id].start_test()
         problem = DB.select_random_problem_by_problem_number()
